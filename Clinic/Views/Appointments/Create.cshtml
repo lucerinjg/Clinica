@@ -1,0 +1,129 @@
+﻿@model Clinic.Models.VM.AppointmentCreate
+
+@{
+    ViewData["Title"] = "Crear cita";
+}
+
+<div class="container p-sm-4">
+
+    <h1>Agendar cita</h1>
+
+    <h4>Citas</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mb-2">
+                    <label asp-for="SpecialtyId" class="control-label"></label>
+                    <select asp-for="SpecialtyId" class="form-control" asp-items="ViewBag.Specialties">
+                        <option value="">-- Seleccione una especialidad --</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="DoctorId" class="control-label"></label>
+                    <select asp-for="DoctorId" class="form-control"></select>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="SlotId" class="control-label"></label>
+                    <select asp-for="SlotId" class="form-control"></select>
+                </div>
+                <div class="form-group mb-2">
+                    <label asp-for="ReasonForVisit" class="control-label"></label>
+                    <textarea asp-for="ReasonForVisit" rows="3" class="form-control"></textarea>
+                    <span asp-validation-for="ReasonForVisit" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Agendar cita" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Regresar a la lista</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const specialtySelect = document.getElementById('@Html.IdFor(Model => Model.SpecialtyId)');
+            const doctorSelect = document.getElementById('@Html.IdFor(Model => Model.DoctorId)');
+            const slotSelect = document.getElementById('@Html.IdFor(Model => Model.SlotId)');
+
+            // --- Evento para cuando cambia la Especialidad ---
+            specialtySelect.addEventListener('change', function () {
+                const specialtyId = this.value;
+
+                // Limpiar y deshabilitar los selects dependientes
+                resetSelect(doctorSelect, '-- Seleccione una especialidad --');
+                resetSelect(slotSelect, '-- Seleccione un doctor --');
+
+                if (!specialtyId) {
+                    return; // Si no hay especialidad seleccionada, no hacer nada.
+                }
+
+                // Llamada AJAX para obtener los doctores
+                fetch(`@Url.Action("GetDoctors")?specialtyId=${specialtyId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        populateSelect(doctorSelect, data, '-- Seleccione un doctor --');
+                    })
+                    .catch(error => console.error('Error al cargar doctores:', error));
+            });
+
+            // --- Evento para cuando cambia el Doctor ---
+            doctorSelect.addEventListener('change', function () {
+                const doctorId = this.value;
+
+                // Limpiar y deshabilitar el select de horarios
+                resetSelect(slotSelect, '-- Seleccione un doctor --');
+
+                if (!doctorId) {
+                    return;
+                }
+
+                // Llamada AJAX para obtener los horarios disponibles
+                fetch(`@Url.Action("GetAvailableSlots")?doctorId=${doctorId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        populateSelect(slotSelect, data, '-- Seleccione un horario --');
+                    })
+                    .catch(error => console.error('Error al cargar horarios:', error));
+            });
+
+            // --- Funciones de utilidad ---
+
+            function resetSelect(selectElement, defaultText) {
+                selectElement.innerHTML = ''; // Limpiar opciones existentes
+                const defaultOption = new Option(defaultText, '');
+                selectElement.add(defaultOption);
+                selectElement.disabled = true;
+            }
+
+            function populateSelect(selectElement, items, defaultText) {
+                selectElement.innerHTML = '';
+                const defaultOption = new Option(defaultText, '');
+                selectElement.add(defaultOption);
+
+                if (items.length > 0) {
+                    items.forEach(item => {
+                        const optionText = item.text;
+                        const option = new Option(optionText, item.id);
+                        selectElement.add(option);
+                    });
+                    selectElement.disabled = false;
+                } else {
+                    // Si no hay resultados, mostramos un mensaje indicándolo.
+                    resetSelect(selectElement, `-- No hay opciones disponibles --`);
+                }
+            }
+
+        });
+    </script>
+}

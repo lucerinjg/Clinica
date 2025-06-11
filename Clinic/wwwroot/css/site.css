@@ -1,0 +1,298 @@
+html {
+    min-height: 100%;
+}
+
+:root {
+    --accent: #D69E2E;
+}
+
+body {
+    background: radial-gradient(#e6e6e6 3px, transparent 4px), radial-gradient(#e6e6e6 3px, transparent 4px), linear-gradient(#fff 4px, transparent 0), linear-gradient(45deg, transparent 74px, transparent 75px, #e6e6e6 75px, #e6e6e6 76px, transparent 77px, transparent 109px), linear-gradient(-45deg, transparent 75px, transparent 76px, #e6e6e6 76px, #e6e6e6 77px, transparent 78px, transparent 109px), #fff;
+    background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+    background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
+
+.btn {
+    font-weight: 700;
+    transition: .5s;
+}
+
+    .btn:hover {
+        -webkit-box-shadow: 0 8px 6px -6px #555555;
+        -moz-box-shadow: 0 8px 6px -6px #555555;
+        box-shadow: 0 8px 6px -6px #555555;
+    }
+
+.btn-square {
+    width: 36px;
+    height: 36px;
+}
+
+.btn-sm-square {
+    width: 28px;
+    height: 28px;
+}
+
+.btn-lg-square {
+    width: 46px;
+    height: 46px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 30px;
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+    z-index: 99;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    font-family: 'Roboto Condensed';
+    position: relative;
+    margin-left: 30px;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--bs-dark);
+    outline: none;
+    transition: .5s;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover,
+    .navbar-light .navbar-nav .nav-link.active {
+        color: var(--bs-warning);
+    }
+
+@media (min-width: 992px) {
+    .navbar-light .navbar-nav .nav-link::before {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 5px;
+        bottom: 0;
+        left: 50%;
+        background: var(--bs-warning);
+        transition: .5s;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover::before,
+    .navbar-light .navbar-nav .nav-link.active::before {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link {
+        margin-left: 0;
+        padding: 10px 0;
+    }
+}
+
+.hero-header {
+    background: url(../img/hero1.jpg) top right no-repeat;
+    background-size: cover;
+}
+
+.service-item {
+    position: relative;
+    height: 350px;
+    padding: 0 30px;
+    transition: .5s;
+}
+
+    .service-item .service-icon {
+        width: 150px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bs-primary);
+        border-radius: 50%;
+        transform: rotate(-14deg);
+    }
+
+        .service-item .service-icon i {
+            transform: rotate(15deg);
+        }
+
+    .service-item a.btn {
+        position: absolute;
+        width: 60px;
+        bottom: -48px;
+        left: 50%;
+        margin-left: -30px;
+        opacity: 0;
+    }
+
+    .service-item:hover a.btn {
+        bottom: -24px;
+        opacity: 1;
+    }
+
+.price-carousel::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    background: var(--bs-primary);
+    border-radius: 8px 8px 50% 50%;
+    z-index: -1;
+}
+
+.price-carousel .owl-nav {
+    margin-top: 35px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+    .price-carousel .owl-nav .owl-prev,
+    .price-carousel .owl-nav .owl-next {
+        position: relative;
+        margin: 0 5px;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--bs-primary);
+        background: #FFFFFF;
+        font-size: 22px;
+        border-radius: 45px;
+        transition: .5s;
+    }
+
+        .price-carousel .owl-nav .owl-prev:hover,
+        .price-carousel .owl-nav .owl-next:hover {
+            color: var(--bs-dark);
+        }
+
+@media (min-width: 576px) {
+    .team-item .row {
+        height: 350px;
+    }
+}
+
+.team-carousel .owl-nav {
+    position: absolute;
+    padding: 0 45px;
+    width: 100%;
+    height: 45px;
+    top: calc(50% - 22.5px);
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .team-carousel .owl-nav .owl-prev,
+    .team-carousel .owl-nav .owl-next {
+        position: relative;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+        background: var(--bs-primary);
+        border-radius: 45px;
+        font-size: 22px;
+        transition: .5s;
+    }
+
+        .team-carousel .owl-nav .owl-prev:hover,
+        .team-carousel .owl-nav .owl-next:hover {
+            background: var(--bs-dark);
+        }
+
+.testimonial-carousel .owl-dots {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 20px;
+    height: 20px;
+    background: var(--bs-light);
+    border: 2px solid var(--bs-primary);
+    border-radius: 20px;
+    transition: .5s;
+}
+
+    .testimonial-carousel .owl-dot.active {
+        width: 40px;
+        height: 40px;
+        background: var(--bs-primary);
+    }
+
+.testimonial-carousel .owl-item img {
+    width: 150px;
+    height: 150px;
+}
+
+
+.form-signin {
+    max-width: 448px;
+    padding: 1rem;
+}
+
+.custom-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+    .custom-icon > path {
+        fill: var(--accent);
+    }
+
+.text-accent {
+    color: var(--accent);
+}
+
+/* Contenedor para los íconos */
+.social-container {
+    display: flex;
+    gap: 2rem; /* Espacio entre íconos */
+}
+
+/* Estilo base y de transición para los íconos */
+.social-icon {
+    font-size: 2rem; /* Tamaño del ícono */
+    color: #6c757d; /* Color gris neutro de Bootstrap */
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+    /* Efecto de zoom y cambio de color al pasar el cursor */
+    .social-icon:hover {
+        transform: scale(1.2); /* Aumenta el tamaño del ícono */
+    }
+
+/* Colores específicos para cada red social al pasar el cursor */
+.bi-facebook:hover {
+    color: #0d6efd; /* Azul de Bootstrap */
+}
+
+.bi-twitter-x:hover {
+    color: #000; /* Negro */
+}
+
+.bi-instagram:hover {
+    color: #d62976; /* Rosa/Púrpura de Instagram */
+}

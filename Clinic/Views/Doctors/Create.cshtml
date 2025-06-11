@@ -1,0 +1,86 @@
+﻿@using Clinic.Models.VM
+@model DoctorCreate
+
+@{
+    ViewData["Title"] = "Registrar Doctor";
+    var specialties = ViewBag.Specialties as SelectList;
+}
+<div class="container p-sm-4">
+
+    <h1>Registrar</h1>
+
+    <h4>Doctor</h4>
+    <hr />
+    <form asp-action="Create">
+        <div class="row g-2">
+            <div class="col-md-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PaternalSurname" class="control-label"></label>
+                    <input asp-for="PaternalSurname" class="form-control" />
+                    <span asp-validation-for="PaternalSurname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="MaternalSurname" class="control-label"></label>
+                    <input asp-for="MaternalSurname" class="form-control" />
+                    <span asp-validation-for="MaternalSurname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="SpecialtyId" class="control-label"></label>
+                    <select asp-for="SpecialtyId" class="form-select" asp-items="specialties"></select>
+                    <span asp-validation-for="SpecialtyId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control mb-0" placeholder="********" />
+                <span asp-validation-for="Password" class="text-danger mb-1"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control mb-0" placeholder="********" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger mb-1"></span>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" value="Registrar" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="mt-2">
+        <a asp-action="Index">Regresar a la lista</a>
+    </div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,20 @@
+﻿@using Clinic.Views.Shared
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["ActivePage"] = ManageNav.Profile;
+}
+
+<h2 class="pt-3 pb-2 mb-3 border-bottom">Cuenta de usuario</h2>
+
+<div class="row flex-row-reverse g-2">
+    <div class="col-md-3">
+        <partial name="_ManageNav" />
+    </div>
+    <div class="col-md-9">
+        @RenderBody()
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

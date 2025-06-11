@@ -1,0 +1,41 @@
+﻿@inject IOptions<Clinic.Data.ClientOptions> ClientOptions
+@{
+    var client = ClientOptions.Value;
+    ViewData["Title"] = "Misión y visión";
+}
+<div class="container my-5 py-5">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="section-title display-4">El Alma de <span class="text-accent">@client.Name</span></h1>
+            <p class="section-subtitle lead">Nuestra razón de ser y el futuro que construimos para ti.</p>
+        </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-5 col-md-8">
+            <div class="card mission-vision-card text-center p-4">
+                <div class="card-body">
+                    <i class="bi bi-heart-pulse-fill card-icon"></i>
+                    <h2 class="card-title-custom mb-3">Nuestra Misión</h2>
+                    <p class="card-text text-secondary">
+                        Ofrecer una atención médica excepcional y humana, utilizando tecnología de vanguardia para diagnosticar con precisión y tratar con efectividad. 
+                        Nuestra vocación es <strong>iluminar el camino hacia el bienestar</strong> de cada paciente, brindando cuidado, empatía y total transparencia en cada paso del proceso.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-8">
+            <div class="card mission-vision-card text-center p-4">
+                <div class="card-body">
+                    <i class="bi bi-lightbulb-fill card-icon"></i>
+                    <h2 class="card-title-custom mb-3">Nuestra Visión</h2>
+                    <p class="card-text text-secondary">
+                        Ser reconocidos como un <strong>faro de innovación y calidez humana</strong> en el sector salud. Aspiramos a ser la clínica de referencia donde la excelencia médica y la confianza del paciente convergen, transformando vidas y construyendo una comunidad más saludable y llena de esperanza para el futuro.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

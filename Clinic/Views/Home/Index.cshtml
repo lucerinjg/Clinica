@@ -1,0 +1,285 @@
+﻿@inject IOptions<Clinic.Data.ClientOptions> ClientOptions
+@{
+    var client = ClientOptions.Value;
+    var email = $"contacto@{client.Acronym.ToLower()}.com";
+    ViewData["Title"] = "Página de inicio";
+}
+<!-- Hero Start -->
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-start">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h1 class="display-1 text-white mb-md-4">
+                    Las mejores soluciones de salud en su ciudad
+                </h1>
+                <div class="pt-2">
+                    <a class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2" asp-controller="Appointments" asp-action="Create">Agenda tu cita</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row gx-5">
+    <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+        <div class="position-relative h-100">
+            <img class="position-absolute w-100 h-100 rounded" src="img/surgeons.jpg" style="object-fit: cover;">
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="mb-4">
+            <h5 class="d-inline-block text-accent text-uppercase border-bottom border-5">Acerca de nosotros.</h5>
+            <h1 class="display-4">
+                La mejor atención médica para usted y su familia
+            </h1>
+        </div>
+        <p>
+            Desde 2012, ofrecemos servicios de salud ininterrumpidos en México, el sede en Puebla. Contamos con nuestra avanzada tecnología médica, equipos especializados en cada rama,
+            una arquitectura moderna conforme a los estándares internacionales de acreditación en salud y unidades de diagnóstico y tratamiento completamente equipadas.
+        </p><p>
+            Trabajamos sin cesar para mantener y mejorar nuestra estructura, diseñada teniendo en cuenta todas las necesidades de nuestros huéspedes que vienen de México
+            y de todo el mundo, en el marco de los derechos universales de los pacientes, para que se sientan "cómodos, tranquilos, seguros".
+        </p>
+        <div class="row g-3 pt-3">
+            <div class="col-sm-3 col-6">
+                <div class="bg-light text-center rounded-circle py-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="custom-icon">
+                        <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-96 55.2C54 332.9 0 401.3 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7c0-81-54-149.4-128-171.1l0 50.8c27.6 7.1 48 32.2 48 62l0 40c0 8.8-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16s7.2-16 16-16l0-24c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 24c8.8 0 16 7.2 16 16s-7.2 16-16 16l-16 0c-8.8 0-16-7.2-16-16l0-40c0-29.8 20.4-54.9 48-62l0-57.1c-6-.6-12.1-.9-18.3-.9l-91.4 0c-6.2 0-12.3 .3-18.3 .9l0 65.4c23.1 6.9 40 28.3 40 53.7c0 30.9-25.1 56-56 56s-56-25.1-56-56c0-25.4 16.9-46.8 40-53.7l0-59.1zM144 448a24 24 0 1 0 0-48 24 24 0 1 0 0 48z" />
+                    </svg>
+                    <h6 class="mb-0">Doctores<small class="d-block text-accent">Calificados</small></h6>
+                </div>
+            </div>
+            <div class="col-sm-3 col-6">
+                <div class="bg-light text-center rounded-circle py-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="custom-icon">
+                        <path d="M483.2 9.6L524 64l92 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-104 0c-7.6 0-14.7-3.6-19.2-9.6L468.7 70.3l-47 99.9c-3.7 7.8-11.3 13.1-19.9 13.7s-16.9-3.4-21.7-10.6L339.2 112 216 112c-13.3 0-24-10.7-24-24s10.7-24 24-24l136 0c8 0 15.5 4 20 10.7l24.4 36.6 45.9-97.5C445.9 6.2 453.2 1 461.6 .1s16.6 2.7 21.6 9.5zM320 160l12.7 0 20.7 31.1c11.2 16.8 30.6 26.3 50.7 24.8s37.9-13.7 46.5-32L461.9 160l82.1 0c53 0 96 43 96 96l0 224c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-32-224 0-32 0L64 448l0 32c0 17.7-14.3 32-32 32s-32-14.3-32-32L0 96C0 78.3 14.3 64 32 64s32 14.3 32 32l0 256 224 0 0-160c0-17.7 14.3-32 32-32zm-144 0a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" />
+                    </svg>
+                    <h6 class="mb-0">Servicios<small class="d-block text-accent">Urgentes</small></h6>
+                </div>
+            </div>
+            <div class="col-sm-3 col-6">
+                <div class="bg-light text-center rounded-circle py-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="custom-icon">
+                        <path d="M160 32c0-17.7 14.3-32 32-32l32 0c17.7 0 32 14.3 32 32c17.7 0 32 14.3 32 32l0 224c0 17.7-14.3 32-32 32c0 17.7-14.3 32-32 32l-32 0c-17.7 0-32-14.3-32-32c-17.7 0-32-14.3-32-32l0-224c0-17.7 14.3-32 32-32zM32 448l288 0c70.7 0 128-57.3 128-128s-57.3-128-128-128l0-64c106 0 192 86 192 192c0 49.2-18.5 94-48.9 128l16.9 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-160 0L32 512c-17.7 0-32-14.3-32-32s14.3-32 32-32zm80-64l192 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                    </svg>
+                    <h6 class="mb-0">Pruebas<small class="d-block text-accent">Confiables</small></h6>
+                </div>
+            </div>
+            <div class="col-sm-3 col-6">
+                <div class="bg-light text-center rounded-circle py-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="custom-icon">
+                        <path d="M0 48C0 21.5 21.5 0 48 0L368 0c26.5 0 48 21.5 48 48l0 48 50.7 0c17 0 33.3 6.7 45.3 18.7L589.3 192c12 12 18.7 28.3 18.7 45.3l0 18.7 0 32 0 64c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32 0c0 53-43 96-96 96s-96-43-96-96l-128 0c0 53-43 96-96 96s-96-43-96-96l-16 0c-26.5 0-48-21.5-48-48L0 48zM416 256l128 0 0-18.7L466.7 160 416 160l0 96zM160 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm368-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM176 80l0 48-48 0c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l48 0 0 48c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16l0-48 48 0c8.8 0 16-7.2 16-16l0-32c0-8.8-7.2-16-16-16l-48 0 0-48c0-8.8-7.2-16-16-16l-32 0c-8.8 0-16 7.2-16 16z" />
+                    </svg>
+                    <h6 class="mb-0">Ambulancias<small class="d-block text-accent">Disponibles</small></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="text-center mx-auto mb-5">
+            <h1 class="display-4">Servicios Médicos</h1>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="~/img/service-1.jpg" class="d-block w-100" alt="Servicio de cardiología">
+                    <div class="card-body">
+                        <h5 class="card-title">Cardiología</h5>
+                        <p class="card-text">Nos especializamos en el diagnóstico y tratamiento de enfermedades del corazón y los vasos sanguíneos. Ofrecemos prevención, manejo de condiciones crónicas y cuidados post-operatorios para garantizar tu salud cardiovascular integral y mejorar tu calidad de vida.</p>
+                        @* <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> *@
+                        <a asp-controller="Appointments" asp-action="Create" class="btn btn-primary rounded-pill py-3 px-5 my-2">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/img/service-2.jpg" class="d-block w-100" alt="Servicio de cirugía general">
+                    <div class="card-body">
+                        <h5 class="card-title">Cirugía General</h5>
+                        <p class="card-text">Realizamos procedimientos quirúrgicos para tratar una amplia gama de padecimientos abdominales, de la piel y tejidos blandos. Nuestro equipo experto utiliza técnicas avanzadas para asegurar intervenciones seguras y una pronta recuperación de nuestros pacientes.</p>
+                        @* <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> *@
+                        <a asp-controller="Appointments" asp-action="Create" class="btn btn-primary rounded-pill py-3 px-5 my-2">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/img/service-3.jpg" class="d-block w-100" alt="Servicio de otorrinolaringología">
+                    <div class="card-body">
+                        <h5 class="card-title">Otorrinolaringología</h5>
+                        <p class="card-text">Atendemos integralmente las enfermedades de oído, nariz y garganta. Desde infecciones y problemas de audición hasta trastornos de la voz y sinusitis, nuestro equipo ofrece diagnósticos precisos y tratamientos efectivos para restaurar tu bienestar.</p>
+                        @* <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> *@
+                        <a asp-controller="Appointments" asp-action="Create" class="btn btn-primary rounded-pill py-3 px-5 my-2">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="~/img/service-4.jpg" class="d-block w-100" alt="Servicio de ortopedia y traumatología">
+
+                    <div class="card-body">
+                        <h5 class="card-title">Ortopedia y Traumatología</h5>
+                        <p class="card-text">Ofrecemos atención especializada para lesiones y enfermedades del sistema musculoesquelético. Tratamos fracturas, luxaciones, lesiones deportivas y padecimientos degenerativos en huesos, articulaciones, ligamentos y tendones para restaurar tu movilidad y función.</p>
+                        @* <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> *@
+                        <a asp-controller="Appointments" asp-action="Create" class="btn btn-primary rounded-pill py-3 px-5 my-2">Agendar cita</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="text-center mx-auto mb-5">
+            <h1 class="display-4">Nuestros Médicos</h1>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="~/img/team-1.jpg" class="img-fluid rounded-start" alt="Dr. Alejandro Cervantes">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. Alejandro Cervantes</h5>
+                                <p class="card-text">Con 15 años de experiencia, se especializa en la prevención de infartos y el manejo de la hipertensión arterial.</p>
+                                <p class="card-text"><small class="text-body-secondary">Encargado de Cardiología</small></p>
+                                <div class="social-container d-flex justify-content-center border-top pt-2">
+                                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Facebook">
+                                        <i class="bi bi-facebook text-gray-700 social-icon hover:text-blue-600"></i>
+                                    </a>
+                                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su perfil en X">
+                                        <i class="bi bi-twitter-x text-gray-700 social-icon hover:text-black"></i>
+                                    </a>
+                                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Instagram">
+                                        <i class="bi bi-instagram text-gray-700 social-icon hover:text-pink-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="~/img/team-2.jpg" class="img-fluid rounded-start" alt="Dra. Isabela Ríos">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Isabela Ríos</h5>
+                                <p class="card-text">Experta en cirugía laparoscópica mínimamente invasiva. Su prioridad es tu pronta y segura recuperación postoperatoria.</p>
+                                <p class="card-text"><small class="text-body-secondary">Encargado de Cirugía General</small></p>
+                                <div class="social-container d-flex justify-content-center border-top pt-2">
+                                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Facebook">
+                                        <i class="bi bi-facebook text-gray-700 social-icon hover:text-blue-600"></i>
+                                    </a>
+                                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su perfil en X">
+                                        <i class="bi bi-twitter-x text-gray-700 social-icon hover:text-black"></i>
+                                    </a>
+                                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Instagram">
+                                        <i class="bi bi-instagram text-gray-700 social-icon hover:text-pink-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="~/img/team-3.jpg" class="img-fluid rounded-start" alt="Dr. Mateo Herrera">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. Mateo Herrera</h5>
+                                <p class="card-text">Especialista en cirugía endoscópica nasal y en el tratamiento de trastornos de la voz para niños y adultos.</p>
+                                <p class="card-text"><small class="text-body-secondary">Encargado de Otorrinolaringología</small></p>
+                                <div class="social-container d-flex justify-content-center border-top pt-2">
+                                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Facebook">
+                                        <i class="bi bi-facebook text-gray-700 social-icon hover:text-blue-600"></i>
+                                    </a>
+                                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su perfil en X">
+                                        <i class="bi bi-twitter-x text-gray-700 social-icon hover:text-black"></i>
+                                    </a>
+                                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Instagram">
+                                        <i class="bi bi-instagram text-gray-700 social-icon hover:text-pink-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="~/img/team-4.jpg" class="img-fluid rounded-start" alt="Dra. Sofía Navarro">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Sofía Navarro</h5>
+                                <p class="card-text">Enfocada en medicina deportiva y reemplazos articulares. Su misión es devolverte el movimiento sin dolor.</p>
+                                <p class="card-text"><small class="text-body-secondary">Encargado de Ortopedia y Traumatología</small></p>
+                                <div class="social-container d-flex justify-content-center border-top pt-2">
+                                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Facebook">
+                                        <i class="bi bi-facebook text-gray-700 social-icon hover:text-blue-600"></i>
+                                    </a>
+                                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su perfil en X">
+                                        <i class="bi bi-twitter-x text-gray-700 social-icon hover:text-black"></i>
+                                    </a>
+                                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Instagram">
+                                        <i class="bi bi-instagram text-gray-700 social-icon hover:text-pink-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-5">
+    <div class="col-md-6">
+        <h4 class="d-inline-block text-accent text-uppercase border-bottom border-5 border-warning mb-4">Contáctenos</h4>
+        <p class="mb-4">Nos encontramos en la ciudad de Puebla de los Ángeles, en el domicilio conocido</p>
+        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>Calle 123, Colonia Ejemplo, Puebla</p>
+        <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>@email</p>
+        <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+52 223 123 123456</p>
+    </div>
+    <div class="col-md-6">
+        <h4 class="d-inline-block text-accent text-uppercase border-bottom border-5 border-warning mb-4">Escribenos</h4>
+        <form action="">
+            <div class="input-group">
+                <input type="text" class="form-control p-3 border-0" placeholder="Email">
+                <button class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+        <h6 class="text-accent text-uppercase mt-4 mb-3">Síguenos</h6>
+        <div class="social-container d-flex justify-content-center border-top pt-2">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Facebook">
+                <i class="bi bi-facebook text-gray-700 social-icon hover:text-blue-600"></i>
+            </a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su perfil en X">
+                <i class="bi bi-twitter-x text-gray-700 social-icon hover:text-black"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visita su Instagram">
+                <i class="bi bi-instagram text-gray-700 social-icon hover:text-pink-500"></i>
+            </a>
+        </div>
+    </div>
+</div>

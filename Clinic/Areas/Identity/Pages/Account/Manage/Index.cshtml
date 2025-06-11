@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Información básica";
+    ViewData["ActiveProfileMenu"] = ManageNavPages.Index;
+}
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<form id="profile-form" method="post" class="row g-3">
+    <div class="col-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+    <div class="col-lg-6">
+        <label asp-for="UserInfo.Username"></label>
+        <input asp-for="UserInfo.Username" class="form-control" disabled />
+    </div>
+    <div class="col-12 m-0 p-0"></div>
+    <div class="col-lg-4">
+        <label asp-for="UserInfo.Name"></label>
+        <input asp-for="UserInfo.Name" class="form-control" dis abled />
+    </div>
+    <div class="col-lg-4">
+        <label asp-for="UserInfo.PaternalSurname"></label>
+        <input asp-for="UserInfo.PaternalSurname" class="form-control" disabled />
+    </div>
+    <div class="col-lg-4">
+        <label asp-for="UserInfo.MaternalSurname"></label>
+        <input asp-for="UserInfo.MaternalSurname" class="form-control" disabled />
+    </div>
+    <div class="col-lg-6">
+        <label asp-for="Input.PhoneNumber"></label>
+        <input asp-for="Input.PhoneNumber" class="form-control" />
+        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="col-12 text-center">
+        <button id="update-profile-button" type="submit" class="btn btn-primary">Actualizar</button>
+    </div>
+</form>
+
+@section Scripts {
+
+}

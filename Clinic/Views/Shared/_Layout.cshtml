@@ -1,0 +1,81 @@
+﻿@inject IOptions<Clinic.Data.ClientOptions> ClientOptions
+@{
+    var client = ClientOptions.Value;
+    var nameSplit = client.NameSplit;
+}
+
+<!DOCTYPE html>
+<html lang="es-mx" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @client.FullName</title>
+
+    @* Roboto & Roboto Condensed from Google Fonts*@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    @* Bootstrap icons *@
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="d-flex h-100">
+    <div class="d-flex w-100 h-100 mx-auto flex-column">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light bg-light border-bottom box-shadow">
+                <div class="container">
+
+                    <div class="logo-container flex flex-col items-center justify-center">
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                            <svg width="200" height="50" viewBox="0 0 200 50">
+                                <defs>
+                                    <linearGradient id="rayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#F6E05E;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#D69E2E;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Texto -->
+                                <text x="30" y="32" font-family="Roboto Condensed" font-size="20" fill="#2D3748">
+                                    @client.Type
+                                    @for (int i = 0; i < nameSplit.Length - 1; i++)
+                                    {
+                                        <tspan font-weight="700">@nameSplit[i]</tspan>
+                                    }
+                                    <tspan font-weight="700" fill="url(#rayGradient)">@nameSplit[nameSplit.Length - 1]</tspan>
+                                </text>
+                                <line x1="123" y1="18" x2="137" y2="34" stroke="white" stroke-width="1.5" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between">
+
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main role="main" class="container bg-body shadow main">
+            @RenderBody()
+        </main>
+        <footer class="mt-auto bg-body-tertiary py-3">
+            <div class="container">
+                &copy; @DateTime.Now.Year - @client.FullName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Política de privacidad</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/popper/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

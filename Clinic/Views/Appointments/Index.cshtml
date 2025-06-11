@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Clinic.Models.VM.AppointmentIndex>
+
+@{
+    ViewData["Title"] = "Listado de citas";
+}
+
+<div class="container p-sm-4">
+
+    <h1>Listado de citas</h1>
+
+    <p>
+        <a asp-action="Create">Agendar cita</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AppointmentStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrackingId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AppointmentDateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DoctorFullName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialtyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReasonForVisit)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.AppointmentStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.TrackingId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.AppointmentDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.DoctorFullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.SpecialtyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.ReasonForVisit)
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.AppointmentId" title="Detalles"><i class="bi bi-info-circle"></i></a>
+                            <a class="btn btn-danger" asp-action="Cancel" asp-route-id="@item.AppointmentId" title="Cancelar"><i class="bi bi-ban"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

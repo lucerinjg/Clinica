@@ -1,0 +1,51 @@
+﻿@inject IOptions<Clinic.Data.ClientOptions> ClientOptions
+@{
+    var client = ClientOptions.Value;
+    ViewData["Title"] = "Política de Privacidad";
+}
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+    <p class="text-muted fst-italic">Fecha de última actualización: @Html.Raw($"{new DateTime(2025, 1, 1):yyyy-MM-dd}")</p>
+
+    <p>Bienvenido a @client.Type @client.Name. Su privacidad es de suma importancia para nosotros. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando visita nuestro sitio web y utiliza nuestros servicios.</p>
+
+    <p>Le pedimos que lea esta política de privacidad detenidamente. Si no está de acuerdo con los términos de esta política de privacidad, por favor, no acceda al sitio.</p>
+
+    <h4>1. Información que Recopilamos</h4>
+    Podemos recopilar información sobre usted de varias maneras. La información que podemos recopilar en el Sitio incluye:
+
+    <h5>Datos Personales:</h5>
+    Información de identificación personal, como su nombre, dirección de correo electrónico, número de teléfono y datos demográficos (como su edad, sexo y ciudad) que usted nos proporciona voluntariamente cuando se registra en el Sitio o cuando elige participar en diversas actividades relacionadas con el Sitio, como solicitar citas o rellenar formularios de contacto.
+
+    <h5>Datos de Salud (si aplica):</h5>
+    Dado que somos @client.Type.ToLower(), podemos recopilar información de salud necesaria para la prestación de nuestros servicios médicos, siempre con su consentimiento explícito y de acuerdo con la legislación aplicable.
+
+    <h5>Datos Derivados:</h5>
+    Información que nuestros servidores recopilan automáticamente cuando usted accede al Sitio, como su dirección IP, su tipo de navegador, su sistema operativo, sus horas de acceso y las páginas que ha visto directamente antes y después de acceder al Sitio.
+
+    <h5>Datos de Cookies y Seguimiento:</h5>
+    Utilizamos cookies, balizas web, píxeles de seguimiento y otras tecnologías de seguimiento en el Sitio para ayudar a personalizar el Sitio y mejorar su experiencia. Para obtener más información sobre cómo usamos las cookies, consulte nuestra sección "Uso de Cookies y Tecnologías de Seguimiento" a continuación.
+
+    <h4>2. Uso de su Información</h4>
+    Tener información precisa sobre usted nos permite ofrecerle una experiencia fluida, eficiente y personalizada. Específicamente, podemos usar la información recopilada sobre usted a través del Sitio para:
+
+    <ul>
+        <li>Gestionar su cuenta y perfil.</li>
+        <li>Agendar y confirmar citas médicas.</li>
+        <li>Enviarle un correo electrónico de confirmación o recordatorio.</li>
+        <li>Responder a sus comentarios y preguntas y proporcionar servicio al cliente.</li>
+        <li>Enviarle boletines informativos, promociones y otra información sobre nuestros servicios.</li>
+        <li>Mejorar la eficiencia y el funcionamiento del Sitio.</li>
+        <li>Analizar el uso y las tendencias para mejorar su experiencia con el Sitio.</li>
+    </ul>
+
+    <h4>3. Divulgación de su Información</h4>
+    No compartiremos, venderemos, alquilaremos ni intercambiaremos su información con terceros para fines promocionales sin su consentimiento. Podemos compartir información que hemos recopilado sobre usted en ciertas situaciones:
+    <ul>
+        <li><strong>Por Ley o para Proteger Derechos:</strong> Si creemos que la divulgación es necesaria para responder a un proceso legal, para investigar o remediar posibles violaciones de nuestras políticas, o para proteger los derechos, la propiedad y la seguridad de otros.</li>
+        <li><strong>Proveedores de Servicios Terceros:</strong> Podemos compartir su información con terceros que realizan servicios para nosotros o en nuestro nombre, incluidos el procesamiento de pagos, el análisis de datos, el envío de correos electrónicos, los servicios de alojamiento y el servicio al cliente.</li>
+        <li><strong>Con su Consentimiento:</strong> Podemos divulgar su información personal para cualquier otro propósito con su consentimiento.</li>
+    </ul>
+    <h4>4. Seguridad de su Información</h4>
+    Utilizamos medidas de seguridad administrativas, técnicas y físicas para ayudar a proteger su información personal. Si bien hemos tomado medidas razonables para proteger la información personal que nos proporciona, tenga en cuenta que, a pesar de nuestros esfuerzos, ninguna medida de seguridad es perfecta o impenetrable, y no se puede garantizar ningún método de transmisión de datos por tiempo indefinido.
+</div>

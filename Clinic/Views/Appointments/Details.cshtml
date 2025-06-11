@@ -1,0 +1,67 @@
+﻿@model Clinic.Models.VM.AppointmentDetails
+
+@{
+    ViewData["Title"] = "Detalles de la cita";
+}
+<div class="container p-sm-4">
+
+    <h1>Detalles de la cita</h1>
+
+    <div>
+        <h4>Cita</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.TrackingId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.TrackingId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppointmentStatus)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppointmentStatus)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ReasonForVisit)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ReasonForVisit)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AdministrativeNotes)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AdministrativeNotes)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SpecialtyName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SpecialtyName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DoctorFullName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DoctorFullName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ClientFullName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ClientFullName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppointmentDateTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppointmentDateTime)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Index">Regesar a la lista</a>
+    </div>
+</div>

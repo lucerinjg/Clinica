@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Clinic.Models.VM.SlotsIndex>
+
+@{
+    ViewData["Title"] = "Listado de citas";
+}
+<div class="container p-sm-4">
+
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-action="Create">Agregar horarios</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsBooked)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.Raw(item.StartDate.ToString("yyyy-MM-dd HH:mm"))
+                    </td>
+                    <td>
+                        @Html.Raw(item.EndDate.ToString("yyyy-MM-dd HH:mm"))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsBooked)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.SlotId" title="Editar"><i class="bi bi-pencil"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

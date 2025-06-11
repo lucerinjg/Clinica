@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var isPatient = User.IsInRole("Patient");
+    var isDoctor = User.IsInRole("Doctor");
+    var isAdmin = User.IsInRole("Sudo");
+}
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="MissionVision">Misión y Visión</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+    </li>
+    @if (isAdmin)
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Gestionar
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="" asp-controller="Specialties" asp-action="Index">Especialidades</a></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Doctors" asp-action="Index">Doctores</a></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Patients" asp-action="Index">Pacientes</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Appointments" asp-action="Index">Citas</a></li>
+            </ul>
+        </li>
+    }
+    @if (isPatient)
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Appointments" asp-action="Index">Citas</a>
+        </li>
+    }
+    @if (isDoctor)
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Gestionar
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="" asp-controller="DoctorSlots" asp-action="Index">Agenda</a></li>
+                <li><a class="dropdown-item" asp-area="" asp-controller="Appointments" asp-action="Index">Citas</a></li>
+            </ul>
+        </li>
+    }
+</ul>
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hola @User.Identity?.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Salir</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Registrarse</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Ingresar</a>
+        </li>
+    }
+</ul>
