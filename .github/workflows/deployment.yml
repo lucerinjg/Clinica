@@ -22,7 +22,7 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         # Asegúrate de que esta versión coincida con la de tu proyecto
-        dotnet-version: '9.0.5'
+        dotnet-version: '9.0.300'
     
     # 3. Restore Dependencies: Restaura los paquetes NuGet del proyecto
     - name: Restore dependencies
