@@ -1,0 +1,58 @@
+# Nombre del flujo de trabajo que aparecerá en la pestaña "Actions" de GitHub
+name: Deploy ASP.NET Core App to Oracle VPS (Clinic)
+
+# Disparador: Este flujo se ejecuta cada vez que se hace un push a la rama 'master'
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build-and-deploy:
+
+  # El tipo de máquina virtual donde se ejecutará el trabajo
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout: Descarga tu código del repositorio a la máquina virtual de GitHub
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # 2. Setup .NET: Instala el SDK de .NET Core en la máquina virtual
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        # Asegúrate de que esta versión coincida con la de tu proyecto
+        dotnet-version: '9.0.5'
+    
+    # 3. Restore Dependencies: Restaura los paquetes NuGet del proyecto
+    - name: Restore dependencies
+      run: dotnet restore -r linux-x64
+
+    # 4. Build: Compila el proyecto en modo Release
+    - name: Build
+      run: dotnet build Clinic --self-contained true --configuration Release --no-restore --os linux
+
+    # 5. Publish: Crea los archivos listos para producción
+    - name: Publish
+      run: dotnet publish Clinic --self-contained true --no-restore --no-build --output /home/runner/work/dotnet-webapp --runtime linux-x64
+
+    # 6. Copy files: Copiar archivos usando SCP
+    - name: Copy files via SSH
+      uses: appleboy/scp-action@v1
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "/home/runner/work/dotnet-webapp"
+        target: ${{ secrets.TARGET_DIR }}
+        strip_components: 4
+        rm: true
+      
+    # 7. Update files on remote: Copiar archivos usando SSH
+    - name: Execute remote SSH commands using key
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: sudo rm ${{ secrets.PUBLISH_DIR }}/* -rf && sudo cp ${{ secrets.TARGET_DIR }}/* ${{ secrets.PUBLISH_DIR }} -R && sudo chmod +x ${{ secrets.PUBLISH_DIR }}/Clinic && sudo chown dotnet-user:dotnet ${{ secrets.PUBLISH_DIR }} -R  && sudo systemctl restart clinic.service
